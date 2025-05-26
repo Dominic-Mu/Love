@@ -1,0 +1,41 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+
+# VS Code settings
+.vscode/
+
+# Build output
+dist/
+build/
+out/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Coverage reports
+coverage/
+*.lcov
+
+# IDEs
+.idea/
+*.iml
+
+# Personal files
+*.bak
+*.old
+
+# Secrets
+.streamlit/
+.qodo

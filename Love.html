@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Heart's Code</title>
+    <style type="text/css">
+        .my-heart {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            margin: 50px auto;
+            transform: rotate(-45deg);
+            animation: heartbeat 1.5s infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: visible;
+        }
+
+        .my-heart::before,
+        .my-heart::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .my-heart::before {
+            top: -150px;
+            left: 0;
+        }
+
+        .my-heart::after {
+            left: 150px;
+            top: 0;
+        }
+
+        .heart-content {
+            position: absolute;
+            transform: rotate(45deg);
+            width: 80%;
+            height: 80%;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1) rotate(-45deg); }
+            15% { transform: scale(1.1) rotate(-45deg); }
+            30% { transform: scale(1) rotate(-45deg); }
+            45% { transform: scale(1.1) rotate(-45deg); }
+            60% { transform: scale(1) rotate(-45deg); }
+            100% { transform: scale(1) rotate(-45deg); }
+        }
+
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-loop {
+            font-size: 1.1em;
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+
+        .signature {
+            font-family: cursive;
+            margin-top: 15px;
+        }
+
+        .highlight {
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="my-heart">
+        <div class="heart-content">
+            <h1>My Dear <span class="highlight">Maurine Khalifa</span></h1>
+            <div class="code-loop">
+                while (true) {<br>
+                &nbsp;&nbsp;myLove.forYou++;<br>
+                &nbsp;&nbsp;happiness.together += 1;<br>
+                &nbsp;&nbsp;future.plans.push(new Adventure());<br>
+                }
+            </div>
+            <div class="signature">
+                // Forever yours,<br>
+                <span style="font-size: 1.4em;">&lt;3 Dominic Muli</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
