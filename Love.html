@@ -4,7 +4,7 @@
     <title>My Heart's Code</title>
     <style type="text/css">
         body {
-            background: #fefefe; /* light background instead of black */
+            background: #fefefe; /* light background */
             color: #fff;
             display: flex;
             justify-content: center;
@@ -16,8 +16,8 @@
 
         .my-heart {
             position: relative;
-            width: 400px; /* increased width */
-            height: 400px; /* increased height */
+            width: 500px; /* increased container width */
+            height: 500px; /* increased container height */
             background: linear-gradient(to right, #ff9a9e, #fad0c4);
             margin: 50px auto;
             transform: rotate(-45deg);
@@ -32,27 +32,27 @@
         .my-heart::after {
             content: '';
             position: absolute;
-            width: 400px; /* increased width */
-            height: 400px; /* increased height */
+            width: 500px; /* matching container width */
+            height: 500px; /* matching container height */
             background: inherit;
             border-radius: 50%;
         }
 
         .my-heart::before {
-            top: -200px; /* adjusted for new size */
+            top: -250px; /* half of the new size */
             left: 0;
         }
 
         .my-heart::after {
-            left: 200px; /* adjusted for new size */
+            left: 250px; /* half of the new size */
             top: 0;
         }
 
         .heart-content {
             position: absolute;
             transform: rotate(45deg);
-            width: 80%;
-            height: 80%;
+            width: 75%;
+            height: 75%;
             color: #fff;
             text-align: center;
             display: flex;
