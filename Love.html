@@ -3,10 +3,21 @@
 <head>
     <title>My Heart's Code</title>
     <style type="text/css">
+        body {
+            background: #fefefe; /* light background instead of black */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Courier New', monospace;
+        }
+
         .my-heart {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 400px; /* increased width */
+            height: 400px; /* increased height */
             background: linear-gradient(to right, #ff9a9e, #fad0c4);
             margin: 50px auto;
             transform: rotate(-45deg);
@@ -21,19 +32,19 @@
         .my-heart::after {
             content: '';
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 400px; /* increased width */
+            height: 400px; /* increased height */
             background: inherit;
             border-radius: 50%;
         }
 
         .my-heart::before {
-            top: -150px;
+            top: -200px; /* adjusted for new size */
             left: 0;
         }
 
         .my-heart::after {
-            left: 150px;
+            left: 200px; /* adjusted for new size */
             top: 0;
         }
 
@@ -57,17 +68,6 @@
             45% { transform: scale(1.1) rotate(-45deg); }
             60% { transform: scale(1) rotate(-45deg); }
             100% { transform: scale(1) rotate(-45deg); }
-        }
-
-        body {
-            background: #1a1a1a;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            font-family: 'Courier New', monospace;
         }
 
         h1 {
