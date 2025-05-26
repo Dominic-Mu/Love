@@ -46,11 +46,12 @@ with open("Love.html", "r") as f:
 
 def main_page():
     """Display the heart animation with button"""
-    # Display heart animation by passing HTML string to the component
-    html(heart_html, height=800)
-    
+    # Place the button at the top so it's always visible
     if st.button("💝 Generate Special Love Message 💝", key="main_button"):
         st.session_state.page = 'quotes'
+    
+    # Render the heart HTML with a slightly reduced height to fit the viewport
+    html(heart_html, height=600)
 
 def quotes_page():
     """Display AI-generated love quotes"""

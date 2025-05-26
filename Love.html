@@ -3,92 +3,121 @@
 <head>
     <title>My Heart's Code</title>
     <style type="text/css">
-        body {
-            background: #fefefe; /* light background */
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            background: #fefefe;
             color: #fff;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            font-family: 'Courier New', monospace;
         }
 
         .my-heart {
             position: relative;
-            width: 500px; /* increased container width */
-            height: 500px; /* increased container height */
+            width: 270px;
+            height: 270px;
             background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            margin: 50px auto;
             transform: rotate(-45deg);
             animation: heartbeat 1.5s infinite;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: visible;
+            z-index: 0;
         }
 
         .my-heart::before,
         .my-heart::after {
             content: '';
             position: absolute;
-            width: 500px; /* matching container width */
-            height: 500px; /* matching container height */
+            width: 270px;
+            height: 270px;
             background: inherit;
             border-radius: 50%;
+            z-index: -1;
         }
 
         .my-heart::before {
-            top: -250px; /* half of the new size */
+            top: -135px;
             left: 0;
         }
 
         .my-heart::after {
-            left: 250px; /* half of the new size */
             top: 0;
+            left: 135px;
         }
 
         .heart-content {
-            position: absolute;
+            position: relative;
             transform: rotate(45deg);
-            width: 75%;
-            height: 75%;
+            width: 90%;
+            height: 90%;
             color: #fff;
             text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            z-index: 2;
+            align-items: center;
+            padding: 10px;
+            overflow-wrap: break-word;
+            z-index: 1;
         }
 
         @keyframes heartbeat {
-            0% { transform: scale(1) rotate(-45deg); }
-            15% { transform: scale(1.1) rotate(-45deg); }
-            30% { transform: scale(1) rotate(-45deg); }
-            45% { transform: scale(1.1) rotate(-45deg); }
-            60% { transform: scale(1) rotate(-45deg); }
-            100% { transform: scale(1) rotate(-45deg); }
+            0%, 100% { transform: scale(1) rotate(-45deg); }
+            15%, 45% { transform: scale(1.05) rotate(-45deg); }
+            30%, 60% { transform: scale(1) rotate(-45deg); }
         }
 
         h1 {
             margin: 0;
-            font-size: 2.2em;
+            font-size: 1.4em;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .code-loop {
-            font-size: 1.1em;
-            margin: 20px 0;
-            line-height: 1.5;
+            font-size: 0.9em;
+            margin: 12px 0;
+            line-height: 1.4;
         }
 
         .signature {
             font-family: cursive;
-            margin-top: 15px;
+            margin-top: 8px;
         }
 
         .highlight {
             color: #ff6b6b;
+        }
+
+        @media (max-height: 500px), (max-width: 400px) {
+            .my-heart, .my-heart::before, .my-heart::after {
+                width: 200px;
+                height: 200px;
+            }
+
+            .my-heart::before {
+                top: -100px;
+            }
+
+            .my-heart::after {
+                left: 100px;
+            }
+
+            .heart-content {
+                font-size: 0.75em;
+                padding: 8px;
+            }
         }
     </style>
 </head>
@@ -105,9 +134,10 @@
             </div>
             <div class="signature">
                 // Forever yours,<br>
-                <span style="font-size: 1.4em;">&lt;3 Dominic Muli</span>
+                <span style="font-size: 1.1em;">&lt;3 Dominic Muli</span>
             </div>
         </div>
     </div>
 </body>
 </html>
+<!-- This code creates a heart-shaped animation with a love message inside it. The heart beats and the message is styled to look appealing. -->
