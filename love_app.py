@@ -1,41 +1,39 @@
 # love_app.py
 import streamlit as st
-import requests
+from openai import OpenAI
 from streamlit.components.v1 import html
 
-# Initialize session state
-if 'page' not in st.session_state:
-    st.session_state.page = 'main'
 
-# DeepSeek API configuration
-DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
-HEADERS = {
-    "Authorization": f"Bearer {st.secrets['DEEPSEEK_KEY']}",
-    "Content-Type": "application/json"
-}
+# Initialize session state
+if "page" not in st.session_state:
+    st.session_state.page = "main"
+
+# Configure new API client using secrets
+client = OpenAI(
+    api_key=st.secrets["OPENAI_API_KEY"],
+    base_url="https://api.kluster.ai/v1"
+)
 
 def generate_love_quote():
-    """Generate AI love quote using DeepSeek's API"""
+    """Generate AI love quote using new DeepSeek API via OpenAI client"""
     prompt = """Generate a unique, romantic love quote. Follow these rules:
     1. Maximum 15 words
     2. Include a metaphor about nature
     3. Use passionate but elegant language
     4. No clichés like 'heart of gold'"""
     
-    data = {
-        "model": "deepseek-chat",
-        "messages": [
-            {"role": "system", "content": "You are a romantic poet."},
-            {"role": "user", "content": prompt}
-        ],
-        "temperature": 0.7,
-        "max_tokens": 50
-    }
-    
     try:
-        response = requests.post(DEEPSEEK_API_URL, json=data, headers=HEADERS)
-        response.raise_for_status()
-        return response.json()['choices'][0]['message']['content'].strip()
+        completion = client.chat.completions.create(
+            model="deepseek-ai/DeepSeek-V3-0324",
+            max_completion_tokens=50,
+            temperature=0.6,
+            top_p=1,
+            messages=[
+                {"role": "system", "content": "You are a romantic poet."},
+                {"role": "user", "content": prompt}
+            ]
+        )
+        return completion.choices[0].message.content.strip()
     except Exception as e:
         st.error(f"Error generating quote: {str(e)}")
         return "Your love is my eternal sunrise, forever painting my world with warmth."
@@ -46,11 +44,8 @@ with open("Love.html", "r") as f:
 
 def main_page():
     """Display the heart animation with button"""
-    # Place the button at the top so it's always visible
     if st.button("💝 Generate Special Love Message 💝", key="main_button"):
-        st.session_state.page = 'quotes'
-    
-    # Render the heart HTML with a slightly reduced height to fit the viewport
+        st.session_state.page = "quotes"
     html(heart_html, height=600)
 
 def quotes_page():
@@ -61,11 +56,9 @@ def quotes_page():
     </div>
     """, unsafe_allow_html=True)
     
-    # Generate and display quote
-    if 'current_quote' not in st.session_state:
+    if "current_quote" not in st.session_state:
         st.session_state.current_quote = generate_love_quote()
     
-    # Quote display styling
     st.markdown(f"""
     <div style='
         padding: 30px;
@@ -85,19 +78,18 @@ def quotes_page():
     </div>
     """, unsafe_allow_html=True)
     
-    # Control buttons
-    col1, col2 = st.columns([1,1])
+    col1, col2 = st.columns([1, 1])
     with col1:
         if st.button("✨ New Love Message ✨"):
             st.session_state.current_quote = generate_love_quote()
-            st.rerun()
+            st.experimental_rerun()
     with col2:
         if st.button("🔙 Back to Heart"):
-            st.session_state.page = 'main'
-            st.rerun()
+            st.session_state.page = "main"
+            st.experimental_rerun()
 
 # Page routing
-if st.session_state.page == 'main':
+if st.session_state.page == "main":
     main_page()
 else:
     quotes_page()
