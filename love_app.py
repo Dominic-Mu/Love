@@ -3,8 +3,15 @@ import streamlit as st
 from openai import OpenAI
 from streamlit.components.v1 import html
 
+# MUST BE FIRST STREAMLIT COMMAND
+st.set_page_config(
+    page_title="Love App",
+    page_icon="💖",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
 
-# Initialize session state
+# Initialize session state AFTER page config
 if "page" not in st.session_state:
     st.session_state.page = "main"
 
@@ -93,11 +100,3 @@ if st.session_state.page == "main":
     main_page()
 else:
     quotes_page()
-
-# Set page title and icon
-st.set_page_config(
-    page_title="Love App",
-    page_icon="💖",
-    layout="centered",
-    initial_sidebar_state="collapsed"
-)
