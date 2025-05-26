@@ -93,3 +93,11 @@ if st.session_state.page == "main":
     main_page()
 else:
     quotes_page()
+
+# Set page title and icon
+st.set_page_config(
+    page_title="Love App",
+    page_icon="💖",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
